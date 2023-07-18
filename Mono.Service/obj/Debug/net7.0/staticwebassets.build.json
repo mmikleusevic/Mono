@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "rpoqKfRs+hwwaPWnINkVxAbwD8MBvt9wDwjJrZxidbs=",
+  "Source": "Mono.Service",
+  "BasePath": "_content/Mono.Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
