@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mono.SharedLibrary\Mono.SharedLibrary.csproj" />
     <ProjectReference Include="..\SharedLibrary\Mono.SharedLibrary.csproj" />
   </ItemGroup>
 
