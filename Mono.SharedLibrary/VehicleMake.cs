@@ -2,10 +2,14 @@
 {
     public class VehicleMake
     {
+        public VehicleMake()
+        {
+            VehicleModels = new HashSet<VehicleModel>();
+        }
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Abrv { get; set; } = string.Empty;
 
-        public ICollection<VehicleModel>? VehicleModels { get; set; }
+        public virtual ICollection<VehicleModel> VehicleModels { get; set; }
     }
 }

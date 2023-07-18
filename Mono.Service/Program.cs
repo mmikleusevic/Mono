@@ -44,9 +44,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "A sample Web API.",
         Contact = new OpenApiContact
         {
-            Name = "Marin Mikleuševiæ",
+           
+            Name = "Marin Mikleušević",
             Email = "mikleusevicmarin@gmail.com",
-            Url = new Uri("https://www.linkedin.com/in/marin-mikleuševiæ-80aaaa145/")
+            Url = new Uri("https://www.linkedin.com/in/marin-mikleušević-80aaaa145/")
         },
         Version = "v1"
     });

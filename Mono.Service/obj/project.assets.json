@@ -4794,9 +4794,6 @@
           "projectReferences": {
             "C:\\Users\\Marin\\source\\repos\\Mono\\Mono.SharedLibrary\\Mono.SharedLibrary.csproj": {
               "projectPath": "C:\\Users\\Marin\\source\\repos\\Mono\\Mono.SharedLibrary\\Mono.SharedLibrary.csproj"
-            },
-            "C:\\Users\\Marin\\source\\repos\\Mono\\SharedLibrary\\Mono.SharedLibrary.csproj": {
-              "projectPath": "C:\\Users\\Marin\\source\\repos\\Mono\\SharedLibrary\\Mono.SharedLibrary.csproj"
             }
           }
         }

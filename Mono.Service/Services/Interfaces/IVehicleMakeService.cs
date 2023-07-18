@@ -6,8 +6,8 @@ namespace Mono.Service.Services.Interfaces
     {
         Task<List<VehicleMakeViewModel>> GetAllVehicleMakes();
         Task<VehicleMakeViewModel> GetVehicleMake(int id);
-        void CreateVehicleMake(VehicleMake vehicleMake);
-        void UpdateVehicleMake(VehicleMake vehicleMake);
-        void DeleteVehicleMake(int id);
+        Task CreateVehicleMake(VehicleMake vehicleMake);
+        Task UpdateVehicleMake(VehicleMake vehicleMake);
+        Task DeleteVehicleMake(int id);
     }
 }

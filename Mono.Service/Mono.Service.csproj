@@ -4,6 +4,8 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>Mono.Service</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mono.SharedLibrary\Mono.SharedLibrary.csproj" />
-    <ProjectReference Include="..\SharedLibrary\Mono.SharedLibrary.csproj" />
   </ItemGroup>
 
 </Project>

@@ -14,8 +14,8 @@ namespace Mono.Service.MonoDbContext
         {
         }
 
-        public virtual DbSet<VehicleMake> VehicleMakes { get; set; } = null!;
-        public virtual DbSet<VehicleModel> VehicleModels { get; set; } = null!;
+        public virtual DbSet<VehicleMake> VehicleMakes { get; set; }
+        public virtual DbSet<VehicleModel> VehicleModels { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

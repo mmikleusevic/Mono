@@ -1,33 +1,53 @@
-﻿using Mono.Service.Services.Interfaces;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Mono.Service.MonoDbContext;
+using Mono.Service.Services.Interfaces;
 using Mono.SharedLibrary;
 
 namespace Mono.Service.Services
 {
     public class VehicleMakeService : IVehicleMakeService
     {
-        public void CreateVehicleMake(VehicleMake vehicleMake)
+        private readonly MonoContext _monoContext;
+        private readonly IMapper _mapper;
+
+        public VehicleMakeService(IMapper mapper,
+            MonoContext monoContext)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _monoContext = monoContext;
+        }
+        public async Task CreateVehicleMake(VehicleMake vehicleMake)
+        {
+            await _monoContext.VehicleMakes.AddAsync(vehicleMake);
+            await _monoContext.SaveChangesAsync();
         }
 
-        public void DeleteVehicleMake(int id)
+        public async Task DeleteVehicleMake(int id)
         {
-            throw new NotImplementedException();
+            _monoContext.Remove(id);
+            await _monoContext.SaveChangesAsync();
         }
 
-        public Task<List<VehicleMakeViewModel>> GetAllVehicleMakes()
+        public async Task<List<VehicleMakeViewModel>> GetAllVehicleMakes()
         {
-            throw new NotImplementedException();
+            List<VehicleMake> vehicleMakes = await _monoContext.VehicleMakes.ToListAsync();
+
+            return _mapper.Map<List<VehicleMakeViewModel>>(vehicleMakes);
         }
 
-        public Task<VehicleMakeViewModel> GetVehicleMake(int id)
+        public async Task<VehicleMakeViewModel> GetVehicleMake(int id)
         {
-            throw new NotImplementedException();
+            VehicleMake? vehicleMake = await _monoContext.VehicleMakes.FirstOrDefaultAsync(a => a.Id == id);
+
+            return _mapper.Map<VehicleMakeViewModel>(vehicleMake);
         }
 
-        public void UpdateVehicleMake(VehicleMake vehicleMake)
+        public async Task UpdateVehicleMake(VehicleMake vehicleMake)
         {
-            throw new NotImplementedException();
+            _monoContext.VehicleMakes.Update(vehicleMake);
+
+            await _monoContext.SaveChangesAsync();
         }
     }
 }

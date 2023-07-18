@@ -84,3 +84,4 @@ C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\refint\Mono.Servi
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\Mono.Service.pdb
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\Mono.Service.genruntimeconfig.cache
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\ref\Mono.Service.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service
