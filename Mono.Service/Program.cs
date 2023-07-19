@@ -74,6 +74,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddSingleton(mapper);
+//instead of ninject
 builder.Services.AddScoped<IVehicleMakeService, VehicleMakeService>();
 builder.Services.AddScoped<IVehicleModelService, VehicleModelService>();
 

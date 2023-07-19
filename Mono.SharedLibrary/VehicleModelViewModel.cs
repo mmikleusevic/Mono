@@ -6,5 +6,7 @@
         public int MakeId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Abrv { get; set; } = string.Empty;
+
+        public VehicleMake? VehicleMake { get; set; }
     }
 }
