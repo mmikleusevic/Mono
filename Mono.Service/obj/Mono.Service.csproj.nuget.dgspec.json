@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Microsoft.AspNet.WebApi.WebHost": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.9, )"
@@ -73,6 +77,18 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.9, )"
+            },
+            "Microsoft.Web.Infrastructure": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Ninject.Web.WebApi": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "Ninject.Web.WebApi.WebHost": {
+              "target": "Package",
+              "version": "[3.3.1, )"
             },
             "Serilog.Extensions.Logging.File": {
               "target": "Package",

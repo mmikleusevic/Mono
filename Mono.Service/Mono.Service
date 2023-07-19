@@ -4,6 +4,108 @@
         <name>Mono.Service</name>
     </assembly>
     <members>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.#ctor(Mono.Service.Services.Interfaces.IVehicleMakeService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleMakeController})">
+            <summary>
+            VehicleMakeController constructor,
+            takes interface of VehicleMakeService
+            and generic interface of Logger
+            </summary>
+            <param name="vehicleMakeService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.CreateVehicleMake(Mono.SharedLibrary.VehicleMake)">
+            <summary>
+            Creates a vehicle make
+            </summary>
+            <param name="vehicleMake"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.DeleteVehicleMake(System.Int32)">
+            <summary>
+            Deletes a vehicle make
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.GetAllVehicleMakes">
+            <summary>
+            Returns all vehicle makes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.GetVehicleMake(System.Int32)">
+            <summary>
+            Return a vehicle make
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.PagingVehicleMakes(Mono.SharedLibrary.Paging)">
+            <summary>
+            Returns paged vehicle makes
+            </summary>
+            <param name="paging"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.UpdateVehicleMake(Mono.SharedLibrary.VehicleMake,System.Int32)">
+            <summary>
+            Updates a vehicle make
+            </summary>
+            <param name="vehicleMake"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.#ctor(Mono.Service.Services.Interfaces.IVehicleModelService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleModelController})">
+            <summary>
+            VehicleModelController constructor,
+            takes interface of VehicleModelService
+            and generic interface of Logger
+            </summary>
+            <param name="vehicleModelService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.CreateVehicleModel(Mono.SharedLibrary.VehicleModel)">
+            <summary>
+            Creates a vehicle model
+            </summary>
+            <param name="vehicleModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.DeleteVehicleModel(System.Int32)">
+            <summary>
+            Deletes a vehicle model
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.GetAllVehicleModels">
+            <summary>
+            Returns all vehicle models
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.GetVehicleModel(System.Int32)">
+            <summary>
+            Return a vehicle model
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.PagingVehicleModels(Mono.SharedLibrary.Paging)">
+            <summary>
+            Returns pages vehicle models
+            </summary>
+            <param name="paging"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mono.Service.Controllers.VehicleModelController.UpdateVehicleModel(Mono.SharedLibrary.VehicleModel,System.Int32)">
+            <summary>
+            Updates a vehicle model
+            </summary>
+            <param name="vehicleModel"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Mono.Service.Migrations.Initial">
             <inheritdoc />
         </member>
@@ -15,6 +117,11 @@
         </member>
         <member name="M:Mono.Service.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Mono.Service.Services.VehicleModelService">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

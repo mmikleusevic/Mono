@@ -44,7 +44,7 @@ namespace Mono.Service.MonoDbContext
 
             //VehicleModel
             modelBuilder.Entity<VehicleModel>()
-                .HasOne(e => e.VehicleMake);            
+                .HasOne(e => e.VehicleMake);
 
             modelBuilder.Entity<VehicleModel>()
                 .Property(a => a.Abrv).HasMaxLength(50);

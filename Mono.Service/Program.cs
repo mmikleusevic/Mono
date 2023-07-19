@@ -3,10 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Mono.Service.Mapper;
 using Mono.Service.MonoDbContext;
+using Mono.Service.Ninject;
 using Mono.Service.Services;
 using Mono.Service.Services.Interfaces;
 using Serilog;
 using System.Reflection;
+
+//No need to use ninject in .NET core
+//NinjectWebCommon.Start();
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Error()
@@ -23,7 +27,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<MonoContext>(opts => {
+builder.Services.AddDbContext<MonoContext>(opts =>
+{
     opts.UseSqlServer(
     builder.Configuration["ConnectionStrings:Default"]);
 });
@@ -43,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "Mono API",
         Description = "A sample Web API.",
         Contact = new OpenApiContact
-        {         
+        {
             Name = "Marin Mikleušević",
             Email = "mikleusevicmarin@gmail.com",
             Url = new Uri("https://www.linkedin.com/in/marin-mikleušević-80aaaa145/")

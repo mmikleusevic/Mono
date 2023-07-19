@@ -6,6 +6,9 @@ using Mono.SharedLibrary;
 
 namespace Mono.Service.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class VehicleModelService : IVehicleModelService
     {
         private readonly MonoContext _monoContext;
@@ -25,8 +28,13 @@ namespace Mono.Service.Services
 
         public async Task DeleteVehicleModel(int id)
         {
-            _monoContext.Remove(id);
-            await _monoContext.SaveChangesAsync();
+            VehicleModel? vehicleModel = await _monoContext.VehicleModels.FirstOrDefaultAsync(a => a.Id == id);
+
+            if (vehicleModel != null)
+            {
+                _monoContext.VehicleModels.Remove(vehicleModel);
+                await _monoContext.SaveChangesAsync();
+            }
         }
 
         public async Task<List<VehicleModelViewModel>> GetAllVehicleModels()
@@ -38,9 +46,31 @@ namespace Mono.Service.Services
 
         public async Task<VehicleModelViewModel> GetVehicleModel(int id)
         {
-            VehicleModel? vehicleModel = await _monoContext.VehicleModels.FirstOrDefaultAsync(a => a.Id == id);
+            VehicleModel? vehicleModel = await _monoContext.VehicleModels.Include(a => a.VehicleMake)
+                .FirstOrDefaultAsync(a => a.Id == id);
 
             return _mapper.Map<VehicleModelViewModel>(vehicleModel);
+        }
+
+        public async Task<List<VehicleModelViewModel>> PagingVehicleModels(Paging paging)
+        {
+            IQueryable<VehicleModel> pagedVehicleModels = _monoContext.VehicleModels.Include(a => a.VehicleMake)
+                .Skip(paging.PageSize * paging.CurrentPage)
+                .Take(paging.PageSize)
+                .Where(a => a.Name.Contains(paging.Filter));
+
+            if (paging.OrderBy == "asc")
+            {
+                pagedVehicleModels.OrderBy(a => a.Name);
+            }
+            else
+            {
+                pagedVehicleModels.OrderByDescending(a => a.Name);
+            }
+
+            await pagedVehicleModels.ToListAsync();
+
+            return _mapper.Map<List<VehicleModelViewModel>>(pagedVehicleModels);
         }
 
         public async Task UpdateVehicleModel(VehicleModel vehicleModel)

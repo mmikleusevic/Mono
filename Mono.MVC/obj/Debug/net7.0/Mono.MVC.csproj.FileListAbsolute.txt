@@ -1,11 +1,3 @@
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.csproj.AssemblyReference.cache
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.AssemblyInfoInputs.cache
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.AssemblyInfo.cs
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.csproj.CoreCompileInputs.cache
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.RazorAssemblyInfo.cache
-C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.RazorAssemblyInfo.cs
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\appsettings.json
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.MVC.staticwebassets.runtime.json
@@ -14,6 +6,14 @@ C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.MVC.deps.json
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.MVC.runtimeconfig.json
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.MVC.dll
 C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.MVC.pdb
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.csproj.AssemblyReference.cache
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.AssemblyInfoInputs.cache
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.AssemblyInfo.cs
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.csproj.CoreCompileInputs.cache
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.RazorAssemblyInfo.cache
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.RazorAssemblyInfo.cs
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\staticwebassets\msbuild.Mono.MVC.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\staticwebassets\msbuild.build.Mono.MVC.props
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Mono.MVC.props

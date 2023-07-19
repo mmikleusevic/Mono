@@ -5,6 +5,7 @@ C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service.deps
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service.runtimeconfig.json
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service.dll
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service.pdb
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Azure.Identity.dll
@@ -84,4 +85,15 @@ C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\refint\Mono.Servi
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\Mono.Service.pdb
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\Mono.Service.genruntimeconfig.cache
 C:\Users\Marin\source\repos\Mono\Mono.Service\obj\Debug\net7.0\ref\Mono.Service.dll
-C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Mono.Service
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Ninject.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Ninject.Web.Common.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Ninject.Web.Common.WebHost.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\WebActivatorEx.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\System.Web.Http.WebHost.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Ninject.Web.WebApi.dll
+C:\Users\Marin\source\repos\Mono\Mono.Service\bin\Debug\net7.0\Ninject.Web.WebApi.WebHost.dll

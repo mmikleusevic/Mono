@@ -10,7 +10,7 @@ namespace Mono.Service.Mapper
             //Map smth...
 
             //VehicleMake - VehicleMakeViewModel
-            CreateMap<VehicleMake, VehicleMakeViewModel>()
+            CreateMap<VehicleMake, VehicleMakeViewModel>()               
                     .ReverseMap();
 
             //VehicleModel - VehicleModelViewModel
