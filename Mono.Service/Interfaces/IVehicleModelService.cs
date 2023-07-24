@@ -1,6 +1,6 @@
 ﻿using Mono.SharedLibrary;
 
-namespace Mono.Service.Services.Interfaces
+namespace Mono.Service.Interfaces
 {
     public interface IVehicleModelService
     {

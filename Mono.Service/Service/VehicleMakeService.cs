@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Mono.Service.Interfaces;
 using Mono.Service.MonoDbContext;
-using Mono.Service.Services.Interfaces;
 using Mono.SharedLibrary;
 using System.Collections.Generic;
 using System.Linq.Expressions;

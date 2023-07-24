@@ -4,7 +4,7 @@
         <name>Mono.Service</name>
     </assembly>
     <members>
-        <member name="M:Mono.Service.Controllers.VehicleMakeController.#ctor(Mono.Service.Services.Interfaces.IVehicleMakeService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleMakeController})">
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.#ctor(Mono.Service.Interfaces.IVehicleMakeService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleMakeController})">
             <summary>
             VehicleMakeController constructor,
             takes interface of VehicleMakeService
@@ -55,7 +55,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleModelController.#ctor(Mono.Service.Services.Interfaces.IVehicleModelService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleModelController})">
+        <member name="M:Mono.Service.Controllers.VehicleModelController.#ctor(Mono.Service.Interfaces.IVehicleModelService,Microsoft.Extensions.Logging.ILogger{Mono.Service.Controllers.VehicleModelController})">
             <summary>
             VehicleModelController constructor,
             takes interface of VehicleModelService

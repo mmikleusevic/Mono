@@ -4,11 +4,11 @@ using Microsoft.OpenApi.Models;
 using Mono.Service.Mapper;
 using Mono.Service.MonoDbContext;
 using Mono.Service.Services;
-using Mono.Service.Services.Interfaces;
 using Serilog;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Mono.Service.Interfaces;
 
 //No need to use Ninject in .NET core
 //NinjectWebCommon.Start();
