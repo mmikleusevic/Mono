@@ -18,7 +18,12 @@ namespace Mono.SharedLibrary
         public OrderByValue OrderByValue { get; set; }
         public string OrderBy { get; set; } = string.Empty;
 
-
+        /// <summary>
+        /// Returns sorted list of data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<List<T>> SortToList<T>(IQueryable<T> data)
         {
             PropertyInfo? propertyInfo = typeof(T).GetProperty(OrderBy);
