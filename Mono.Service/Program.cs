@@ -65,7 +65,7 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
-var origins = "http://localhost:40156;http://localhost:5206;http://localhost:35031;http://localhost:5158".Split(';');
+string[] origins = builder.Configuration["Addresses:Origins"]!.Split(';');
 
 builder.Services.AddCors(options =>
 {

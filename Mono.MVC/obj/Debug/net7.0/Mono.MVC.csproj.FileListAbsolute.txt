@@ -29,3 +29,6 @@ C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\refint\Mono.MVC.dll
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.pdb
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.genruntimeconfig.cache
 C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\ref\Mono.MVC.dll
+C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.SharedLibrary.dll
+C:\Users\Marin\source\repos\Mono\Mono.MVC\bin\Debug\net7.0\Mono.SharedLibrary.pdb
+C:\Users\Marin\source\repos\Mono\Mono.MVC\obj\Debug\net7.0\Mono.MVC.csproj.CopyComplete

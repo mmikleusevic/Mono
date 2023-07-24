@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v7.0": {
       "Mono.MVC/1.0.0": {
+        "dependencies": {
+          "Mono.SharedLibrary": "1.0.0"
+        },
         "runtime": {
           "Mono.MVC.dll": {}
+        }
+      },
+      "Mono.SharedLibrary/1.0.0": {
+        "runtime": {
+          "Mono.SharedLibrary.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Mono.MVC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mono.SharedLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

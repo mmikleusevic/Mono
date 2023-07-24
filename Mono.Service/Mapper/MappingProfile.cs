@@ -7,15 +7,17 @@ namespace Mono.Service.Mapper
     {
         public MappingProfile()
         {
-            //Map smth...
-
             //VehicleMake - VehicleMakeViewModel
-            CreateMap<VehicleMake, VehicleMakeViewModel>()               
-                    .ReverseMap();
+            CreateMap<VehicleMake, VehicleMakeViewModel>()     
+                .ForMember(x => x.VehicleModelViewModels, 
+                    opts => opts.MapFrom(a => a.VehicleModels))
+                .ReverseMap();
 
             //VehicleModel - VehicleModelViewModel
             CreateMap<VehicleModel, VehicleModelViewModel>()
-                    .ReverseMap();
+                .ForMember(x => x.VehicleMakeViewModel,
+                    opts => opts.MapFrom(a => a.VehicleMake))
+                .ReverseMap();
         }
     }
 }

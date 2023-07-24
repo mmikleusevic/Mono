@@ -1,6 +1,17 @@
+using Mono.MVC.Interfaces;
+using Mono.MVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<IVehicleModelService, VehicleModelService>();
+builder.Services.AddScoped<IVehicleMakeService, VehicleMakeService>();
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri(builder.Configuration["BaseAddress:Uri"]!)
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -16,12 +27,16 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
+
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=VehicleMake}/{action=Index}/{id?}");
 
-app.Run();
+app.MapControllers();
+
+await app.RunAsync();

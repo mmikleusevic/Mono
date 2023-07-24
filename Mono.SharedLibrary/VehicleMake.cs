@@ -1,4 +1,6 @@
-﻿namespace Mono.SharedLibrary
+﻿using System.Text.Json.Serialization;
+
+namespace Mono.SharedLibrary
 {
     public class VehicleMake
     {
