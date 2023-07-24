@@ -3,13 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Mono.Service.Mapper;
 using Mono.Service.MonoDbContext;
-using Mono.Service.Ninject;
 using Mono.Service.Services;
 using Mono.Service.Services.Interfaces;
 using Serilog;
 using System.Reflection;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
-//No need to use ninject in .NET core
+//No need to use Ninject in .NET core
 //NinjectWebCommon.Start();
 
 Log.Logger = new LoggerConfiguration()
@@ -38,7 +39,9 @@ builder.Services.AddLogging(loggingBuilder =>
 
 var mapper = config.CreateMapper();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x => 
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -74,7 +77,8 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddSingleton(mapper);
-//instead of ninject
+
+// Instead of Ninject
 builder.Services.AddScoped<IVehicleMakeService, VehicleMakeService>();
 builder.Services.AddScoped<IVehicleModelService, VehicleModelService>();
 

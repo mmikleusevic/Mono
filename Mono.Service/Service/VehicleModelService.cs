@@ -55,22 +55,11 @@ namespace Mono.Service.Services
         public async Task<List<VehicleModelViewModel>> PagingVehicleModels(Paging paging)
         {
             IQueryable<VehicleModel> pagedVehicleModels = _monoContext.VehicleModels.Include(a => a.VehicleMake)
-                .Skip(paging.PageSize * paging.CurrentPage)
-                .Take(paging.PageSize)
                 .Where(a => a.Name.Contains(paging.Filter));
 
-            if (paging.OrderBy == "asc")
-            {
-                pagedVehicleModels.OrderBy(a => a.Name);
-            }
-            else
-            {
-                pagedVehicleModels.OrderByDescending(a => a.Name);
-            }
+            List<VehicleModel> list = await Paging.SortToList(pagedVehicleModels, paging);
 
-            await pagedVehicleModels.ToListAsync();
-
-            return _mapper.Map<List<VehicleModelViewModel>>(pagedVehicleModels);
+            return _mapper.Map<List<VehicleModelViewModel>>(list);
         }
 
         public async Task UpdateVehicleModel(VehicleModel vehicleModel)
