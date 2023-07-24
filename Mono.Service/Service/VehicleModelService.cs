@@ -57,7 +57,7 @@ namespace Mono.Service.Services
             IQueryable<VehicleModel> pagedVehicleModels = _monoContext.VehicleModels.Include(a => a.VehicleMake)
                 .Where(a => a.Name.Contains(paging.Filter));
 
-            List<VehicleModel> list = await Paging.SortToList(pagedVehicleModels, paging);
+            List<VehicleModel> list = await paging.SortToList(pagedVehicleModels);
 
             return _mapper.Map<List<VehicleModelViewModel>>(list);
         }

@@ -19,28 +19,28 @@ namespace Mono.SharedLibrary
         public string OrderBy { get; set; } = string.Empty;
 
 
-        public static Task<List<T>> SortToList<T>(IQueryable<T> data, Paging paging)
+        public async Task<List<T>> SortToList<T>(IQueryable<T> data)
         {
-            PropertyInfo? propertyInfo = typeof(T).GetProperty(paging.OrderBy);
+            PropertyInfo? propertyInfo = typeof(T).GetProperty(OrderBy);
 
             IEnumerable<T> orderedData = data.AsEnumerable();
 
             if (propertyInfo != null)
             {
-                if (paging.OrderByValue == OrderByValue.ASC)
+                if (OrderByValue == OrderByValue.ASC)
                 {
                     orderedData = orderedData.OrderBy(a => propertyInfo.GetValue(a, null));
                 }
-                else if(paging.OrderByValue == OrderByValue.DESC)
+                else if(OrderByValue == OrderByValue.DESC)
                 {
                     orderedData = orderedData.OrderByDescending(a => propertyInfo.GetValue(a, null));
                 }
             }
 
-            orderedData = orderedData.Skip(paging.PageSize * paging.CurrentPage)
-                .Take(paging.PageSize);
+            orderedData = orderedData.Skip(PageSize * CurrentPage)
+                .Take(PageSize);
 
-            return Task.FromResult(orderedData.ToList());
+            return await Task.Run(() => orderedData.ToList());
         }
     }
 
