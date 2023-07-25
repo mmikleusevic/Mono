@@ -9,7 +9,7 @@ namespace Mono.MVC.Interfaces
         Task<List<VehicleMakeViewModel>> Paging(Paging paging);
         Task<VehicleMakeViewModel> GetById(int id);
         Task Create(VehicleMake vehicleMake);
-        Task Update(VehicleMake vehicleMake);
+        Task Update(VehicleMake vehicleMake, int id);
         Task Delete(int id);
     }
 }

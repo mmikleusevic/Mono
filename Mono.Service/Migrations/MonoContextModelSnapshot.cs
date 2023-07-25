@@ -41,7 +41,7 @@ namespace Mono.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VehicleMakes");
+                    b.ToTable("VehicleMakes", (string)null);
 
                     b.HasData(
                         new
@@ -89,7 +89,7 @@ namespace Mono.Service.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("VehicleModels");
+                    b.ToTable("VehicleModels", (string)null);
 
                     b.HasData(
                         new

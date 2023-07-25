@@ -1,5 +1,8 @@
-﻿using Mono.MVC.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using Mono.MVC.Interfaces;
 using Mono.SharedLibrary;
+using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace Mono.MVC.Services
@@ -15,19 +18,21 @@ namespace Mono.MVC.Services
 
         public async Task Create(VehicleModel vehicleModel)
         {
-            throw new NotImplementedException();
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleModel), Encoding.UTF8, "application/json");
+
+            await _httpClient.PostAsync($"api/VehicleModel", httpContent);
         }
 
         public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"api/VehicleModel/{id}");           
         }
 
         public async Task<List<VehicleModelViewModel>> GetAll()
         {
             List<VehicleModelViewModel> result = new List<VehicleModelViewModel>();
             HttpResponseMessage? response = await _httpClient.GetAsync("api/VehicleModel");
-            if (response.IsSuccessStatusCode)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 Stream? responseStream = await response.Content.ReadAsStreamAsync();
                 result = await JsonSerializer.DeserializeAsync<List<VehicleModelViewModel>>(responseStream);
@@ -38,17 +43,39 @@ namespace Mono.MVC.Services
 
         public async Task<VehicleModelViewModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            VehicleModelViewModel result = new VehicleModelViewModel();
+            HttpResponseMessage? response = await _httpClient.GetAsync($"api/VehicleModel/{id}");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream? responseStream = await response.Content.ReadAsStreamAsync();
+                result = await JsonSerializer.DeserializeAsync<VehicleModelViewModel>(responseStream);
+            }
+
+            return result!;
         }
 
         public async Task<List<VehicleModelViewModel>> Paging(Paging paging)
         {
-            throw new NotImplementedException();
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(paging), Encoding.UTF8, "application/json");
+
+            List<VehicleModelViewModel> result = new List<VehicleModelViewModel>();
+
+            HttpResponseMessage? response = await _httpClient.PutAsync($"api/VehicleModel/paged", httpContent);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream? responseStream = await response.Content.ReadAsStreamAsync();
+                result = await JsonSerializer.DeserializeAsync<List<VehicleModelViewModel>>(responseStream);
+            }
+
+            return result!;
         }
 
-        public async Task Update(VehicleModel vehicleModel)
+        public async Task Update(VehicleModel vehicleModel, int id)
         {
-            throw new NotImplementedException();
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleModel), Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync($"api/VehicleModel/{id}", httpContent);
         }
     }
 }
