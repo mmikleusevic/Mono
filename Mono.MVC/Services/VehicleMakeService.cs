@@ -16,9 +16,9 @@ namespace Mono.MVC.Services
             _httpClient = httpClient;
         }
 
-        public async Task Create(VehicleMake vehicleMake)
+        public async Task Create(VehicleMakeViewModel vehicleMakeViewModel)
         {
-            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleMake), Encoding.UTF8, "application/json");
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleMakeViewModel), Encoding.UTF8, "application/json");
 
             await _httpClient.PostAsync($"api/VehicleMake", httpContent);
         }
@@ -71,9 +71,9 @@ namespace Mono.MVC.Services
             return result!;
         }
 
-        public async Task Update(VehicleMake vehicleMake, int id)
+        public async Task Update(VehicleMakeViewModel vehicleMakeViewModel, int id)
         {
-            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleMake), Encoding.UTF8, "application/json");
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(vehicleMakeViewModel), Encoding.UTF8, "application/json");
 
             await _httpClient.PutAsync($"api/VehicleMake/{id}", httpContent);
         }

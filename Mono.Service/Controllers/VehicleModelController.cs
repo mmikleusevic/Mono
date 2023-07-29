@@ -33,20 +33,20 @@ namespace Mono.Service.Controllers
         /// <summary>
         /// Creates a vehicle model
         /// </summary>
-        /// <param name="vehicleModel"></param>
+        /// <param name="vehicleModelViewModel"></param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateVehicleModel(VehicleModel vehicleModel)
+        public async Task<IActionResult> CreateVehicleModel(VehicleModelViewModel vehicleModelViewModel)
         {
             try
             {
-                if (vehicleModel != null)
+                if (vehicleModelViewModel != null)
                 {
-                    await _vehicleModelService.CreateVehicleModel(vehicleModel);
-                    return CreatedAtAction(nameof(CreateVehicleModel), new { id = vehicleModel.Id }, vehicleModel);
+                    await _vehicleModelService.CreateVehicleModel(vehicleModelViewModel);
+                    return CreatedAtAction(nameof(CreateVehicleModel), new { id = vehicleModelViewModel.Id }, vehicleModelViewModel);
                 }
                 else
                 {
@@ -179,7 +179,7 @@ namespace Mono.Service.Controllers
         /// <summary>
         /// Updates a vehicle model
         /// </summary>
-        /// <param name="vehicleModel"></param>
+        /// <param name="vehicleModelViewModel"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id:int}")]
@@ -187,19 +187,19 @@ namespace Mono.Service.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateVehicleModel(VehicleModel vehicleModel, int id)
+        public async Task<IActionResult> UpdateVehicleModel(VehicleModelViewModel vehicleModelViewModel, int id)
         {
             try
             {
-                if (vehicleModel == null)
+                if (vehicleModelViewModel == null)
                 {
                     return NotFound($"Vehicle model with id = {id} not found");
                 }
                 else
                 {
-                    if (id == vehicleModel.Id)
+                    if (id == vehicleModelViewModel.Id)
                     {
-                        await _vehicleModelService.UpdateVehicleModel(vehicleModel);
+                        await _vehicleModelService.UpdateVehicleModel(vehicleModelViewModel);
                         return Ok("Vehicle make successfully updated");
                     }
                     return BadRequest("Vehicle model Id mismatch");

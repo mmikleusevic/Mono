@@ -7,8 +7,8 @@ namespace Mono.Service.Interfaces
         Task<List<VehicleModelViewModel>> GetAllVehicleModels();
         Task<List<VehicleModelViewModel>> PagingVehicleModels(Paging paging);
         Task<VehicleModelViewModel> GetVehicleModel(int id);
-        Task CreateVehicleModel(VehicleModel vehicleModel);
-        Task UpdateVehicleModel(VehicleModel vehicleModel);
+        Task CreateVehicleModel(VehicleModelViewModel vehicleModelViewModel);
+        Task UpdateVehicleModel(VehicleModelViewModel vehicleModelViewModel);
         Task DeleteVehicleModel(int id);
     }
 }

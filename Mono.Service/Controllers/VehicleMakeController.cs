@@ -34,20 +34,20 @@ namespace Mono.Service.Controllers
         /// <summary>
         /// Creates a vehicle make
         /// </summary>
-        /// <param name="vehicleMake"></param>
+        /// <param name="vehicleMakeViewModel"></param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateVehicleMake(VehicleMake vehicleMake)
+        public async Task<IActionResult> CreateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
         {
             try
             {
-                if (vehicleMake != null)
+                if (vehicleMakeViewModel != null)
                 {
-                    await _vehicleMakeService.CreateVehicleMake(vehicleMake);
-                    return CreatedAtAction(nameof(CreateVehicleMake), new { id = vehicleMake.Id }, vehicleMake);
+                    await _vehicleMakeService.CreateVehicleMake(vehicleMakeViewModel);
+                    return CreatedAtAction(nameof(CreateVehicleMake), new { id = vehicleMakeViewModel.Id }, vehicleMakeViewModel);
                 }
                 else
                 {
@@ -180,7 +180,7 @@ namespace Mono.Service.Controllers
         /// <summary>
         /// Updates a vehicle make
         /// </summary>
-        /// <param name="vehicleMake"></param>
+        /// <param name="vehicleMakeViewModel"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id:int}")]
@@ -188,19 +188,19 @@ namespace Mono.Service.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateVehicleMake(VehicleMake vehicleMake, int id)
+        public async Task<IActionResult> UpdateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel, int id)
         {
             try
             {
-                if (vehicleMake == null)
+                if (vehicleMakeViewModel == null)
                 {
                     return NotFound($"Vehicle make with id = {id} not found");
                 }
                 else
                 {
-                    if (id == vehicleMake.Id)
+                    if (id == vehicleMakeViewModel.Id)
                     {
-                        await _vehicleMakeService.UpdateVehicleMake(vehicleMake);
+                        await _vehicleMakeService.UpdateVehicleMake(vehicleMakeViewModel);
                         return Ok("Vehicle make successfully updated");
                     }
                     return BadRequest("Vehicle make Id mismatch");

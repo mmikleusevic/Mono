@@ -10,12 +10,15 @@ namespace Mono.MVC.Controllers
     {
         private readonly ILogger<VehicleModelController> _logger;
         private readonly IVehicleModelService _vehicleModelService;
+        private readonly IVehicleMakeService _vehicleMakeService;
 
         public VehicleModelController(ILogger<VehicleModelController> logger,
-            IVehicleModelService vehicleModelService) 
+            IVehicleModelService vehicleModelService,
+            IVehicleMakeService vehicleMakeService) 
         {
             _logger = logger;
             _vehicleModelService = vehicleModelService;
+            _vehicleMakeService = vehicleMakeService;
         }
         public async Task<IActionResult> Index()
         {
@@ -26,11 +29,11 @@ namespace Mono.MVC.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> CreateVehicleModel(VehicleModel vehicleModel)
+        public async Task<IActionResult> CreateVehicleModel(VehicleModelViewModel vehicleModelViewModel)
         {
             _logger.LogInformation("CreateVehicleModel(VehicleModel vehicleModel) started");
 
-            await _vehicleModelService.Create(vehicleModel);
+            await _vehicleModelService.Create(vehicleModelViewModel);
 
             return Redirect("/VehicleModel");
         }
@@ -44,11 +47,11 @@ namespace Mono.MVC.Controllers
             return Redirect("/VehicleModel");
         }
 
-        public async Task<IActionResult> UpdateVehicleModel(VehicleModel vehicleModel, int id)
+        public async Task<IActionResult> UpdateVehicleModel(VehicleModelViewModel vehicleModelViewModel, int id)
         {
-            _logger.LogInformation("UpdateVehicleModel(VehicleModel vehicleModel, int id) started");
+            _logger.LogInformation("UpdateVehicleModel(VehicleModelViewModel vehicleModel, int id) started");
 
-            await _vehicleModelService.Update(vehicleModel, id);
+            await _vehicleModelService.Update(vehicleModelViewModel, id);
 
             return Redirect("/VehicleModel");
         }
@@ -58,6 +61,8 @@ namespace Mono.MVC.Controllers
             _logger.LogInformation("DetailsVehicleModel(int id) started");
 
             VehicleModelViewModel model = await _vehicleModelService.GetById(id);
+
+            ViewData["makes"] = await _vehicleMakeService.GetAll();
 
             return View(model);
         }

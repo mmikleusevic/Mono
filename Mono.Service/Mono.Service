@@ -13,11 +13,11 @@
             <param name="vehicleMakeService"></param>
             <param name="logger"></param>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleMakeController.CreateVehicleMake(Mono.SharedLibrary.VehicleMake)">
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.CreateVehicleMake(Mono.SharedLibrary.VehicleMakeViewModel)">
             <summary>
             Creates a vehicle make
             </summary>
-            <param name="vehicleMake"></param>
+            <param name="vehicleMakeViewModel"></param>
             <returns></returns>
         </member>
         <member name="M:Mono.Service.Controllers.VehicleMakeController.DeleteVehicleMake(System.Int32)">
@@ -47,11 +47,11 @@
             <param name="paging"></param>
             <returns></returns>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleMakeController.UpdateVehicleMake(Mono.SharedLibrary.VehicleMake,System.Int32)">
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.UpdateVehicleMake(Mono.SharedLibrary.VehicleMakeViewModel,System.Int32)">
             <summary>
             Updates a vehicle make
             </summary>
-            <param name="vehicleMake"></param>
+            <param name="vehicleMakeViewModel"></param>
             <param name="id"></param>
             <returns></returns>
         </member>
@@ -64,11 +64,11 @@
             <param name="vehicleModelService"></param>
             <param name="logger"></param>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleModelController.CreateVehicleModel(Mono.SharedLibrary.VehicleModel)">
+        <member name="M:Mono.Service.Controllers.VehicleModelController.CreateVehicleModel(Mono.SharedLibrary.VehicleModelViewModel)">
             <summary>
             Creates a vehicle model
             </summary>
-            <param name="vehicleModel"></param>
+            <param name="vehicleModelViewModel"></param>
             <returns></returns>
         </member>
         <member name="M:Mono.Service.Controllers.VehicleModelController.DeleteVehicleModel(System.Int32)">
@@ -98,11 +98,11 @@
             <param name="paging"></param>
             <returns></returns>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleModelController.UpdateVehicleModel(Mono.SharedLibrary.VehicleModel,System.Int32)">
+        <member name="M:Mono.Service.Controllers.VehicleModelController.UpdateVehicleModel(Mono.SharedLibrary.VehicleModelViewModel,System.Int32)">
             <summary>
             Updates a vehicle model
             </summary>
-            <param name="vehicleModel"></param>
+            <param name="vehicleModelViewModel"></param>
             <param name="id"></param>
             <returns></returns>
         </member>

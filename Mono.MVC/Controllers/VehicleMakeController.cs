@@ -24,11 +24,11 @@ namespace Mono.MVC.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> CreateVehicleMake(VehicleMake vehicleMake)
+        public async Task<IActionResult> CreateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
         {
             _logger.LogInformation("CreateVehicleMake(VehicleMake vehicleMake) started");
 
-            await _vehicleMakeService.Create(vehicleMake);
+            await _vehicleMakeService.Create(vehicleMakeViewModel);
 
             return Redirect("/");
         }
@@ -42,11 +42,11 @@ namespace Mono.MVC.Controllers
             return Redirect("/");
         }
 
-        public async Task<IActionResult> UpdateVehicleMake(VehicleMake vehicleMake, int id)
+        public async Task<IActionResult> UpdateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel, int id)
         {
             _logger.LogInformation("UpdateVehicleMake(VehicleMake vehicleMake, int id) started");
 
-            await _vehicleMakeService.Update(vehicleMake, id);
+            await _vehicleMakeService.Update(vehicleMakeViewModel, id);
 
             return Redirect("/");
         }

@@ -20,8 +20,10 @@ namespace Mono.Service.Services
             _mapper = mapper;
             _monoContext = monoContext;
         }
-        public async Task CreateVehicleModel(VehicleModel vehicleModel)
+        public async Task CreateVehicleModel(VehicleModelViewModel vehicleModelViewModel)
         {
+            VehicleModel vehicleModel = _mapper.Map<VehicleModel>(vehicleModelViewModel);
+
             await _monoContext.VehicleModels.AddAsync(vehicleModel);
             await _monoContext.SaveChangesAsync();
         }
@@ -62,8 +64,10 @@ namespace Mono.Service.Services
             return _mapper.Map<List<VehicleModelViewModel>>(list);
         }
 
-        public async Task UpdateVehicleModel(VehicleModel vehicleModel)
+        public async Task UpdateVehicleModel(VehicleModelViewModel vehicleModelViewModel)
         {
+            VehicleModel vehicleModel = _mapper.Map<VehicleModel>(vehicleModelViewModel);
+
             _monoContext.VehicleModels.Update(vehicleModel);
 
             await _monoContext.SaveChangesAsync();

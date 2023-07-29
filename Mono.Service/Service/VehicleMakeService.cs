@@ -20,8 +20,10 @@ namespace Mono.Service.Services
             _mapper = mapper;
             _monoContext = monoContext;
         }
-        public async Task CreateVehicleMake(VehicleMake vehicleMake)
+        public async Task CreateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
         {
+            VehicleMake vehicleMake = _mapper.Map<VehicleMake>(vehicleMakeViewModel);
+
             await _monoContext.VehicleMakes.AddAsync(vehicleMake);
             await _monoContext.SaveChangesAsync();
         }
@@ -53,7 +55,7 @@ namespace Mono.Service.Services
 
         public async Task<List<VehicleMakeViewModel>> PagingVehicleMakes(Paging paging)
         {
-            IQueryable<VehicleMake> pagedVehicleMakes = _monoContext.VehicleMakes.Include(a => a.VehicleModels)
+            IQueryable<VehicleMake> pagedVehicleMakes = _monoContext.VehicleMakes .Include(a => a.VehicleModels)
                 .Where(a => a.Name.Contains(paging.Filter));
 
             List<VehicleMake> list = await paging.SortToList(pagedVehicleMakes);
@@ -61,10 +63,11 @@ namespace Mono.Service.Services
             return _mapper.Map<List<VehicleMakeViewModel>>(list);
         }
 
-        public async Task UpdateVehicleMake(VehicleMake vehicleMake)
+        public async Task UpdateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
         {
-            _monoContext.VehicleMakes.Update(vehicleMake);
+            VehicleMake vehicleMake= _mapper.Map<VehicleMake>(vehicleMakeViewModel);
 
+            _monoContext.VehicleMakes.Update(vehicleMake);
             await _monoContext.SaveChangesAsync();
         }
     }

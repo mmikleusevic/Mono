@@ -1,1 +1,48 @@
-﻿
+﻿@model List<VehicleMakeViewModel>
+@{
+    ViewData["Title"] = "Vehicle make";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col" style="border:none">
+                <button class="btn btn-primary">
+                    <a asp-controller="VehicleMake"
+                       asp-action="DetailsVehicleMake"
+                       style="color:white; text-decoration: none;">
+                       Create new
+                    </a>
+                </button>
+            </th>
+        </tr>
+        <tr>
+            <th class="col">Name</th>
+            <th class="col">Abbreviation</th>
+            <th class="col" style="text-align:right">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>@data.Name</td>
+                <td>@data.Abrv</td>
+                <td style="text-align:right">
+                    <button class="btn btn-primary">
+                        <a 
+                            asp-controller="VehicleMake" 
+                            asp-action="DetailsVehicleMake"
+                            asp-route-id="@data.Id"
+                            style="color:white; text-decoration: none;">
+                            Details
+                        </a>
+                    </button>
+
+                    <a type="submit" class="btn btn-danger" href="@Url.Action("DeleteConfirmation", "Home", new { id = data.Id })">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
