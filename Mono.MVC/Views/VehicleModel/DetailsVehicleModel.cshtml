@@ -8,13 +8,19 @@
 <div>
     <form method="post">
         <input class="row" name="id" hidden value="@Model.Id" style="margin:5px 0px"/>
-        <select  disabled="@(vehicleMakes == null)" value="@Model.MakeId" name="makeId">
-            @if (Model.VehicleMakeViewModel != null)
+        <select disabled="@(vehicleMakes == null)" value="@Model.MakeId" name="makeId">
+            @if (vehicleMakes != null)
             {
-                <option value="" selected>Select make</option>
+                if(Model.MakeId != 0)
+                {
+                    <option selected value="@Model.MakeId">@vehicleMakes.FirstOrDefault(a => a.Id == Model.MakeId)?.Name</option>
+                }
                 @foreach (var make in vehicleMakes!)
                 {
-                    <option value="@make.Id">@make.Name</option>
+                    if(Model.MakeId != make.Id)
+                    {
+                        <option value="@make.Id">@make.Name</option>                     
+                    }
                 }
             }
         </select>
@@ -23,17 +29,21 @@
 
         @if (Model.Id == 0)
         {
-            <input 
-                asp-controller="VehicleModel" 
-                asp-action="CreateVehicleModel" type="submit" name="Create" 
-                value="Create" class="btn btn-primary" style="margin:5px 0px" />
+            <input  asp-controller="VehicleModel" 
+                asp-action="CreateVehicleModel" name="Create"
+                value="Create"
+                   type="submit"
+                class="btn btn-primary" style="margin:5px 0px" />
         }
         else
         {
             <input asp-controller="VehicleModel" 
                 asp-action="UpdateVehicleModel" 
-                asp-route-id="@Model.Id" type="submit" name="Update" value="Update" 
+                asp-route-id="@Model.Id" name="Update"
+                value="Update"
+                type="submit"
                 class="btn btn-primary" style="margin:5px 0px" />
         }
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="VehicleModel">Cancel</a>
     </form>
 </div>

@@ -1,9 +1,9 @@
-﻿using Ninject.Web.Common;
-using Ninject;
-using Mono.Service.Services;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using Ninject.Web.Common.WebHost;
+﻿using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Mono.Service.Interfaces;
+using Mono.Service.Services;
+using Ninject;
+using Ninject.Web.Common;
+using Ninject.Web.Common.WebHost;
 
 namespace Mono.Service.Ninject
 {

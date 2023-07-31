@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Mono.MVC.Interfaces;
 using Mono.SharedLibrary;
+using X.PagedList;
 
 namespace Mono.MVC.Controllers
 {
@@ -15,13 +17,18 @@ namespace Mono.MVC.Controllers
             _logger = logger;
             _vehicleMakeService = vehicleMakeService;
         }
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(OrderAndSort paging, int? page)
         {
-            _logger.LogInformation("Index() started");
+            _logger.LogInformation("Index(OrderAndSort paging) started");
 
-            List<VehicleMakeViewModel> model = await _vehicleMakeService.GetAll();
+            int pageNumber = page ?? 1;
 
-            return View(model);
+            List<VehicleMakeViewModel> model = await _vehicleMakeService.Paging(paging);
+
+            ViewData["Sort"] = paging;
+
+            return View(model.ToPagedList(pageNumber, 10));
         }
 
         public async Task<IActionResult> CreateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
@@ -60,13 +67,22 @@ namespace Mono.MVC.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> PagingVehicleMake(Paging paging)
+        public async Task<List<VehicleMakeViewModel>> GetAll()
         {
-            _logger.LogInformation("PagingVehicleMake(Paging paging) started");
+            _logger.LogInformation("GetAll() started");
 
-            List<VehicleMakeViewModel> model = await _vehicleMakeService.Paging(paging);
+            List<VehicleMakeViewModel> model = await _vehicleMakeService.GetAll();
 
-            return View(model);
+            return model;
+        }
+
+        public async Task<IActionResult> DeleteConfirmation(int id)
+        {
+            _logger.LogInformation("DeleteConfirmation(int id) started");
+
+            ViewBag.ItemId = id;
+
+            return await Task.FromResult(View());
         }
     }
 }

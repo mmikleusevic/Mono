@@ -759,3 +759,7 @@ Error Number:547,State:0,Class:16
    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
 2023-07-29 17:07:07.742 +02:00 [Error] An error occurred while saving the entity changes. See the inner exception for details.
+2023-07-31 19:20:51.325 +02:00 [Error] PageNumber cannot be below 1. (Parameter 'pageNumber')
+Actual value was 0.
+2023-07-31 19:23:22.198 +02:00 [Error] PageNumber cannot be below 1. (Parameter 'pageNumber')
+Actual value was 0.

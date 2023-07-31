@@ -1,18 +1,40 @@
-﻿@model List<VehicleModelViewModel>
+﻿@model IPagedList<VehicleModelViewModel>
 @{
     ViewData["Title"] = "Vehicle model";
+    OrderAndSort? sort = ViewData["Sort"] as OrderAndSort;
+    if (sort == null)
+    {
+        sort = new OrderAndSort();
+    }
 }
+<form asp-controller="VehicleModel" asp-action="Index" method="post">
+    <p>
+        Name: <input id="filter" name="Filter" placeholder="Enter name" value="@sort.Filter" type="text" />
+        Order by:
+        <select id="orderByValue" value="@sort.OrderByValue" name="OrderByValue">
+            <!option value="@OrderByValue.ASC" @(sort.OrderByValue == OrderByValue.ASC ? "selected" : "")>ASC</!option>
+            <!option value="@OrderByValue.DESC" @(sort.OrderByValue == OrderByValue.DESC ? "selected" : "")>DESC</!option>
+        </select>
+        Order:
+        <select id="orderBy" value="@sort.OrderBy" name="orderBy">
+            <!option value="Name" @(sort.OrderBy == "Name" ? "selected" : "")>Name</!option>
+            <!option value="Abrv" @(sort.OrderBy == "Abrv" ? "selected" : "")>Abrv</!option>
+            <!option value="MakeId" @(sort.OrderBy == "MakeId" ? "selected" : "")>Make</!option>
+        </select>
+        <input type="submit" value="Search" />
+        <input type="button" value="Clear" onclick="ResetForm()" />
+    </p>
+</form>
 <table class="table table-striped">
     <thead>
         <tr>
             <th class="col" style="border:none">
-                <button class="btn btn-primary">
-                    <a asp-controller="VehicleModel"
-                       asp-action="DetailsVehicleModel"
-                       style="color:white; text-decoration: none;">
-                       Create new
-                    </a>
-                </button>
+                <a asp-controller="VehicleModel"
+                    asp-action="DetailsVehicleModel"
+                    class="btn btn-primary"
+                    style="color:white; text-decoration: none;">
+                    Create new
+                </a>
             </th>
         </tr>
         <tr>
@@ -23,25 +45,38 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var data in Model)
+        @if(Model != null)
         {
-            <tr>
-                <td>@data.Name</td>
-                <td>@data.Abrv</td>
-                <td>@data.VehicleMakeViewModel?.Name</td>
-                <td style="text-align:right">
-                    <button class="btn btn-primary">
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@data.Name</td>
+                    <td>@data.Abrv</td>
+                    <td>@data.VehicleMakeViewModel?.Name</td>
+                    <td style="text-align:right">
                         <a asp-controller="VehicleModel"
-                           asp-action="DetailsVehicleModel"
-                           asp-route-id="@data.Id"
-                           style="color:white; text-decoration: none;">
-                           Details
+                            asp-action="DetailsVehicleModel"
+                            asp-route-id="@data.Id"
+                            class="btn btn-primary"
+                            style="color:white; text-decoration: none;">
+                            Update
                         </a>
-                    </button>
 
-                    <button type="submit" class="btn btn-danger"><i class="oi oi-trash">Delete</i></button>
-                </td>
-            </tr>
-        }
+                        <a type="submit" class="btn btn-danger" href="@Url.Action("DeleteConfirmation", "VehicleModel", new { id = data.Id })">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        }      
     </tbody>
 </table>
+<br />
+Page @(Model?.PageCount < Model?.PageNumber ? 0 : Model?.PageNumber) of @Model?.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+    })
+

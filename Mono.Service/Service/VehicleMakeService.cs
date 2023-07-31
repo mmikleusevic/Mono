@@ -3,9 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Mono.Service.Interfaces;
 using Mono.Service.MonoDbContext;
 using Mono.SharedLibrary;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Net.NetworkInformation;
 
 namespace Mono.Service.Services
 {
@@ -32,7 +29,7 @@ namespace Mono.Service.Services
         {
             VehicleMake? vehicleMake = await _monoContext.VehicleMakes.FirstOrDefaultAsync(a => a.Id == id);
 
-            if(vehicleMake != null)
+            if (vehicleMake != null)
             {
                 _monoContext.VehicleMakes.Remove(vehicleMake);
                 await _monoContext.SaveChangesAsync();
@@ -53,19 +50,21 @@ namespace Mono.Service.Services
             return _mapper.Map<VehicleMakeViewModel>(vehicleMake);
         }
 
-        public async Task<List<VehicleMakeViewModel>> PagingVehicleMakes(Paging paging)
+        public async Task<List<VehicleMakeViewModel>> PagingVehicleMakes(OrderAndSort paging)
         {
-            IQueryable<VehicleMake> pagedVehicleMakes = _monoContext.VehicleMakes .Include(a => a.VehicleModels)
+            IQueryable<VehicleMake> pagedVehicleMakes = _monoContext.VehicleMakes.Include(a => a.VehicleModels)
                 .Where(a => a.Name.Contains(paging.Filter));
 
-            List<VehicleMake> list = await paging.SortToList(pagedVehicleMakes);
+            IEnumerable<VehicleMake> list = await paging.Order(pagedVehicleMakes);
+
+            list = list.ToList();
 
             return _mapper.Map<List<VehicleMakeViewModel>>(list);
         }
 
         public async Task UpdateVehicleMake(VehicleMakeViewModel vehicleMakeViewModel)
         {
-            VehicleMake vehicleMake= _mapper.Map<VehicleMake>(vehicleMakeViewModel);
+            VehicleMake vehicleMake = _mapper.Map<VehicleMake>(vehicleMakeViewModel);
 
             _monoContext.VehicleMakes.Update(vehicleMake);
             await _monoContext.SaveChangesAsync();

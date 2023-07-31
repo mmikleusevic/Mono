@@ -3,24 +3,30 @@
     ViewData["Title"] = "Vehicle make details";
 }
 <h2>Vehicle make details</h2>
-<hr/>
+<hr />
 <div>
     <form method="post">
-        <input class="row" name="Id" hidden value="@Model.Id" style="margin:5px 0px"/>
-        <input class="row" name="Name" placeholder="Enter name" value="@Model.Name" type="text" style="margin:5px 0px"/>
-        <input class="row" name="Abrv" placeholder="Enter abbreviation" value="@Model.Abrv" type="text" style="margin:5px 0px"/>
+        <input class="row" name="Id" hidden value="@Model.Id" style="margin:5px 0px" />
+        <input class="row" name="Name" placeholder="Enter name" value="@Model.Name" type="text" style="margin:5px 0px" />
+        <input class="row" name="Abrv" placeholder="Enter abbreviation" value="@Model.Abrv" type="text" style="margin:5px 0px" />
         @if (Model.Id == 0)
         {
-            <input asp-controller="VehicleMake" 
-                asp-action="CreateVehicleMake" type="submit" name="Create"
-                value="Create" class="btn btn-primary" style="margin:5px 0px" />
+            <input asp-controller="VehicleMake"
+                   asp-action="CreateVehicleMake" name="Create"
+                   value="Create"
+                   type="submit"
+                   class="btn btn-primary" style="margin:5px 0px" />
         }
         else
         {
-            <input asp-controller="VehicleMake" 
-                asp-action="UpdateVehicleMake" 
-                asp-route-id="@Model.Id" type="submit" name="Update" value="Update"
-                class="btn btn-primary" style="margin:5px 0px" />
+            <input asp-controller="VehicleMake"
+                   asp-action="UpdateVehicleMake"
+                   asp-route-id="@Model.Id" name="Update"
+                   type="submit"
+                   value="Update"
+                   class="btn btn-primary" style="margin:5px 0px" />
+
         }
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="VehicleMake">Cancel</a>
     </form>
 </div>

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Mono.MVC.Interfaces;
+﻿using Mono.MVC.Interfaces;
 using Mono.SharedLibrary;
 using System.Net;
 using System.Text;
@@ -25,12 +24,12 @@ namespace Mono.MVC.Services
 
         public async Task Delete(int id)
         {
-            await _httpClient.DeleteAsync($"api/VehicleModel/{id}");           
+            await _httpClient.DeleteAsync($"api/VehicleModel/{id}");
         }
 
         public async Task<List<VehicleModelViewModel>> GetAll()
         {
-            List<VehicleModelViewModel> result = new List<VehicleModelViewModel>();
+            List<VehicleModelViewModel>? result = null;
             HttpResponseMessage? response = await _httpClient.GetAsync("api/VehicleModel");
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -43,7 +42,11 @@ namespace Mono.MVC.Services
 
         public async Task<VehicleModelViewModel> GetById(int id)
         {
-            VehicleModelViewModel result = new VehicleModelViewModel();
+            VehicleModelViewModel? result = null;
+            if (id == 0)
+            {
+                result = new VehicleModelViewModel();
+            }
             HttpResponseMessage? response = await _httpClient.GetAsync($"api/VehicleModel/{id}");
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -54,13 +57,13 @@ namespace Mono.MVC.Services
             return result!;
         }
 
-        public async Task<List<VehicleModelViewModel>> Paging(Paging paging)
+        public async Task<List<VehicleModelViewModel>> Paging(OrderAndSort paging)
         {
             HttpContent httpContent = new StringContent(JsonSerializer.Serialize(paging), Encoding.UTF8, "application/json");
 
-            List<VehicleModelViewModel> result = new List<VehicleModelViewModel>();
+            List<VehicleModelViewModel>? result = null;
 
-            HttpResponseMessage? response = await _httpClient.PutAsync($"api/VehicleModel/paged", httpContent);
+            HttpResponseMessage? response = await _httpClient.PostAsync($"api/VehicleModel/paged", httpContent);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {

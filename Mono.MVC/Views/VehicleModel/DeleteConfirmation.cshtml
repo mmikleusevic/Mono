@@ -1,0 +1,7 @@
+﻿<title>Delete Confirmation</title>
+
+<h3>Are you sure you want to delete this item?</h3>
+<form id="deleteForm" method="post" asp-controller="VehicleModel" asp-action="DeleteVehicleModel" asp-route-id="@ViewBag.ItemId">
+    <button class="btn btn-warning" type="submit">Yes</button>
+    <a class="btn btn-secondary" asp-action="Index" asp-controller="VehicleModel">Cancel</a>
+</form>

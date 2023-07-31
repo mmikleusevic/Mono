@@ -8,8 +8,8 @@ namespace Mono.Service.Mapper
         public MappingProfile()
         {
             //VehicleMake - VehicleMakeViewModel
-            CreateMap<VehicleMake, VehicleMakeViewModel>()     
-                .ForMember(x => x.VehicleModelViewModels, 
+            CreateMap<VehicleMake, VehicleMakeViewModel>()
+                .ForMember(x => x.VehicleModelViewModels,
                     opts => opts.MapFrom(a => a.VehicleModels))
                 .ReverseMap();
 

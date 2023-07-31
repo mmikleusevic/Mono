@@ -40,7 +40,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleMakeController.PagingVehicleMakes(Mono.SharedLibrary.Paging)">
+        <member name="M:Mono.Service.Controllers.VehicleMakeController.PagingVehicleMakes(Mono.SharedLibrary.OrderAndSort)">
             <summary>
             Returns paged vehicle makes
             </summary>
@@ -91,7 +91,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Mono.Service.Controllers.VehicleModelController.PagingVehicleModels(Mono.SharedLibrary.Paging)">
+        <member name="M:Mono.Service.Controllers.VehicleModelController.PagingVehicleModels(Mono.SharedLibrary.OrderAndSort)">
             <summary>
             Returns pages vehicle models
             </summary>

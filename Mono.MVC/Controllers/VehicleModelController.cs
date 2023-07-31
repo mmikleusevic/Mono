@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mono.MVC.Interfaces;
-using Mono.MVC.Services;
 using Mono.SharedLibrary;
-using System.Collections.Generic;
+using X.PagedList;
 
 namespace Mono.MVC.Controllers
 {
@@ -14,19 +13,23 @@ namespace Mono.MVC.Controllers
 
         public VehicleModelController(ILogger<VehicleModelController> logger,
             IVehicleModelService vehicleModelService,
-            IVehicleMakeService vehicleMakeService) 
+            IVehicleMakeService vehicleMakeService)
         {
             _logger = logger;
             _vehicleModelService = vehicleModelService;
             _vehicleMakeService = vehicleMakeService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(OrderAndSort paging, int? page)
         {
-            _logger.LogInformation("Index() started");
+            _logger.LogInformation("Index(OrderAndSort paging) started");
 
-            List<VehicleModelViewModel> model = await _vehicleModelService.GetAll();
+            int pageNumber = page ?? 1;
 
-            return View(model);
+            List<VehicleModelViewModel> model = await _vehicleModelService.Paging(paging);
+
+            ViewData["Sort"] = paging;
+
+            return View(model.ToPagedList(pageNumber, 10));
         }
 
         public async Task<IActionResult> CreateVehicleModel(VehicleModelViewModel vehicleModelViewModel)
@@ -67,13 +70,22 @@ namespace Mono.MVC.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> PagingVehicleModel(Paging paging)
+        public async Task<List<VehicleModelViewModel>> GetAll()
         {
-            _logger.LogInformation("PagingVehicleModel(Paging paging) started");
+            _logger.LogInformation("GetAll() started");
 
-            List<VehicleModelViewModel> model = await _vehicleModelService.Paging(paging);
+            List<VehicleModelViewModel> model = await _vehicleModelService.GetAll();
 
-            return View(model);
+            return model;
+        }
+
+        public async Task<IActionResult> DeleteConfirmation(int id)
+        {
+            _logger.LogInformation("DeleteConfirmation(int id) started");
+
+            ViewBag.ItemId = id;
+
+            return await Task.FromResult(View());
         }
     }
 }

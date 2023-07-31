@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Mono.Service.Interfaces;
 using Mono.SharedLibrary;
 using System.Net.Mime;
@@ -158,7 +157,7 @@ namespace Mono.Service.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> PagingVehicleMakes(Paging paging)
+        public async Task<IActionResult> PagingVehicleMakes(OrderAndSort paging)
         {
             try
             {

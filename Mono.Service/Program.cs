@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Mono.Service.Interfaces;
 using Mono.Service.Mapper;
 using Mono.Service.MonoDbContext;
 using Mono.Service.Services;
 using Serilog;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Text.Json;
-using Mono.Service.Interfaces;
 
 //No need to use Ninject in .NET core
 //NinjectWebCommon.Start();
@@ -39,7 +38,7 @@ builder.Services.AddLogging(loggingBuilder =>
 
 var mapper = config.CreateMapper();
 
-builder.Services.AddControllers().AddJsonOptions(x => 
+builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddEndpointsApiExplorer();
